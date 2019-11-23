@@ -26,6 +26,7 @@ Topics:
 - Introduction to Vue
 - Creating Vue application using Vue CLI
 - Explaining Vue CLI and its wizard
+- Introduction to Vue UI
 - Introduction to NPM package manager, installing dependencies like lodash and axios
 - Introduction to .gitignore
 - Introduction to ESLint and basic rules
