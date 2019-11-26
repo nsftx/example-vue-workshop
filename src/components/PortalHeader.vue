@@ -1,5 +1,6 @@
 <template>
-  <div class="header">
+  <div class="header"
+       :style="style">
     <h1>{{ title }}</h1>
   </div>
 </template>
@@ -9,6 +10,13 @@ export default {
   name: 'PortalHeader',
   props: {
     title: String,
+  },
+  computed: {
+    style() {
+      return {
+        backgroundColor: 'white',
+      };
+    },
   },
 };
 </script>
