@@ -5,23 +5,53 @@
     <div class="text"
          v-html="article.text"></div>
     <div class="date">{{article.date}}</div>
+    <button class="like"
+            :class="{ active: isActiveLike }"
+            @click="like()">
+      Like
+    </button>
   </div>
 </template>
 
 <script>
 import { find } from 'lodash';
 import articlesMock from '@/utility/articlesMock';
+import localStorage from '@/utility/localStorage';
 
 export default {
   name: 'ArticleDetail',
   data() {
     return {
+      isActiveLike: false,
     };
   },
   computed: {
-    article() {
-      return find(articlesMock, { id: this.$route.params.id });
+    articleId() {
+      return this.$route.params.id;
     },
+    articleStorageKey() {
+      return `articleLike${this.articleId}`;
+    },
+    article() {
+      return find(articlesMock, { id: this.articleId });
+    },
+  },
+  methods: {
+    isLiked() {
+      return localStorage.getItem(this.articleStorageKey);
+    },
+    like() {
+      if (this.isLiked()) {
+        localStorage.removeItem(this.articleStorageKey);
+      } else {
+        localStorage.setItem(this.articleStorageKey, true);
+      }
+
+      this.isActiveLike = this.isLiked();
+    },
+  },
+  mounted() {
+    this.isActiveLike = this.isLiked();
   },
 };
 </script>
@@ -35,6 +65,20 @@ export default {
 
   .title {
     font-size: 26px;
+  }
+
+  .like {
+    background-color: lightskyblue;
+    color: white;
+    border-radius: 2px;
+    border: 0;
+    padding: 4px 8px;
+    margin-top: 12px;
+    cursor: pointer;
+
+    &.active {
+      background-color: blue;
+    }
   }
 }
 </style>
