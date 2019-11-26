@@ -10,6 +10,10 @@
             @click="like()">
       Like
     </button>
+    <span class="message"
+         v-if="message">
+      {{message}}
+    </span>
   </div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
   data() {
     return {
       isActiveLike: false,
+      message: null,
     };
   },
   computed: {
@@ -50,6 +55,11 @@ export default {
       this.isActiveLike = this.isLiked();
     },
   },
+  watch: {
+    isActiveLike(value) {
+      this.message = value ? 'Thank you!' : null;
+    },
+  },
   mounted() {
     this.isActiveLike = this.isLiked();
   },
@@ -65,6 +75,11 @@ export default {
 
   .title {
     font-size: 26px;
+  }
+
+  .message {
+    padding: 6px;
+    font-weight: bold;
   }
 
   .like {
