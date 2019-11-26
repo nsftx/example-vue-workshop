@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { find } from 'lodash';
+import { find, toNumber } from 'lodash';
 import articlesMock from '@/utility/articlesMock';
 import localStorage from '@/utility/localStorage';
 
@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     articleId() {
-      return this.$route.params.id;
+      return toNumber(this.$route.params.id);
     },
     articleStorageKey() {
       return `articleLike${this.articleId}`;
