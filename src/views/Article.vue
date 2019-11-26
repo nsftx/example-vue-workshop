@@ -1,7 +1,7 @@
 <template>
   <div class="article">
-    <PortalHeader title="Vue News"/>
-    <ArticleDetail/>
+    <PortalHeader :title="title" />
+    <ArticleDetail />
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     PortalHeader,
     ArticleDetail,
+  },
+  data() {
+    return {
+      title: 'Vue News',
+    };
   },
 };
 </script>

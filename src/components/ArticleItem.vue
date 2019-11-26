@@ -14,7 +14,13 @@
 export default {
   name: 'ArticleItem',
   props: {
-    item: Object,
+    item: {
+      type: Object,
+      required: true,
+      validator(value) {
+        return value.title.length > 0;
+      },
+    },
   },
   data() {
     return {

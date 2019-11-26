@@ -1,6 +1,6 @@
 <template>
   <div class="articles">
-    <PortalHeader title="Vue News" />
+    <PortalHeader :title="title" />
     <ArticlesList :articles="articles" />
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   },
   data() {
     return {
+      title: 'Vue News',
       articles: articlesMock,
     };
   },
