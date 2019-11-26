@@ -1,13 +1,12 @@
 <template>
-  <router-link tag="div"
-               class="articleItem"
-               :to="{ name: 'article', params: { id: item.id }}">
+  <a class="articleItem"
+     :href="getLink(item.id)">
     <img class="thumb"
          :src="item.thumb">
     <div class="author">{{item.author}}</div>
     <div class="title">{{item.title}}</div>
     <div class="date">{{item.date}}</div>
-  </router-link>
+  </a>
 </template>
 
 <script>
@@ -26,6 +25,11 @@ export default {
     return {
     };
   },
+  methods: {
+    getLink(id) {
+      return `/article/${id}`;
+    },
+  },
 };
 </script>
 
@@ -37,6 +41,8 @@ export default {
   display: flow-root;
   position: relative;
   cursor: pointer;
+  text-decoration: none;
+  color: black;
 
   .author {
     position: absolute;
