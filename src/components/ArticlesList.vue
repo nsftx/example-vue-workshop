@@ -2,10 +2,10 @@
   <div class="articlesList">
     <div class="categories">
       <div class="category"
-           v-for="category in categories"
+           v-for="(category, index) in categories"
            :key="category"
            @click="setFilterCategory(category)">
-        {{category}}
+        {{index + 1}}. {{category}}
       </div>
     </div>
     <ArticleItem v-for="article in filteredArticles"
