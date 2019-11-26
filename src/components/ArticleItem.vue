@@ -1,8 +1,13 @@
 <template>
-  <div class="articleItem">
-    <img class="thumb" :src="item.thumb">
+  <router-link tag="div"
+               class="articleItem"
+               :to="{ name: 'article', params: { id: item.id }}">
+    <img class="thumb"
+         :src="item.thumb">
+    <div class="author">{{item.author}}</div>
     <div class="title">{{item.title}}</div>
-  </div>
+    <div class="date">{{item.date}}</div>
+  </router-link>
 </template>
 
 <script>
@@ -24,6 +29,17 @@ export default {
   margin-bottom: 12px;
   background-color: #fff;
   display: flow-root;
+  position: relative;
+  cursor: pointer;
+
+  .author {
+    position: absolute;
+    left: 150px;
+    background-color: #ccc;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 14px;
+  }
 
   .thumb {
     float: left;
@@ -32,7 +48,22 @@ export default {
   }
 
   .title {
-    float: none;
+    font-size: 18px;
+    padding-top: 28px;
+    line-height: 24px;
+    height: 72px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .date {
+    position: absolute;
+    left: 150px;
+    bottom: 12px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 14px;
   }
 }
 </style>
