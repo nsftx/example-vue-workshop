@@ -1,13 +1,7 @@
 <template>
   <div class="articlesList">
-    <div class="categories">
-      <div class="category"
-           v-for="(category, index) in categories"
-           :key="category"
-           @click="setFilterCategory(category)">
-        {{index + 1}}. {{category}}
-      </div>
-    </div>
+    <CategoriesFilter :categories="categories"
+                      @change="setFilterCategory" />
     <ArticleItem v-for="article in filteredArticles"
                  :key="article.id"
                  :item="article" />
@@ -17,6 +11,7 @@
 <script>
 import { uniq, map, filter } from 'lodash';
 import ArticleItem from '@/components/ArticleItem.vue';
+import CategoriesFilter from '@/components/CategoriesFilter.vue';
 
 const defaultCategory = 'all';
 
@@ -24,6 +19,7 @@ export default {
   name: 'ArticlesList',
   components: {
     ArticleItem,
+    CategoriesFilter,
   },
   props: {
     articles: Array,
