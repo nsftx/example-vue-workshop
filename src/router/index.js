@@ -16,11 +16,6 @@ const routes = [
       },
       ...articleRoutes,
     ],
-    /* children: [], // prebaciti header u base layout komponentu koja će biti parent ovim rutama
-    meta: {
-      authRequired: true,
-      title: '', // skontati još neki primjer ovoga
-    }, */
   },
 ];
 
