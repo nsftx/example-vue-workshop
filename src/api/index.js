@@ -1,8 +1,5 @@
-import axios from 'axios';
+import articles from './articles';
 
-const http = axios.create({
-  baseURL: process.env.VUE_APP_SERVICE_URL,
-  timeout: 5000,
-});
-
-export default http;
+export default {
+  articles,
+};
