@@ -21,21 +21,21 @@ export default {
     };
   },
   beforeCreate() {
-    console.log('=> beforeCreate Hook');
-    console.log('this.title', this.title);
+    /* console.log('=> beforeCreate Hook');
+    console.log('this.title', this.title); */
   },
   created() {
-    console.log('=> created Hook');
+    /* console.log('=> created Hook');
     console.log('this.title', this.title);
-    console.log('this.$refs.articlesInput', this.$refs.articlesInput);
+    console.log('this.$refs.articlesInput', this.$refs.articlesInput); */
   },
   beforeMount() {
-    console.log('=> beforeMount Hook');
-    console.log('this.$refs.articlesInput', this.$refs.articlesInput);
+    /* console.log('=> beforeMount Hook');
+    console.log('this.$refs.articlesInput', this.$refs.articlesInput); */
   },
   mounted() {
-    console.log('=> mounted Hook');
-    console.log('this.$refs.articlesInput', this.$refs.articlesInput);
+    /* console.log('=> mounted Hook');
+    console.log('this.$refs.articlesInput', this.$refs.articlesInput); */
   },
 };
 </script>
