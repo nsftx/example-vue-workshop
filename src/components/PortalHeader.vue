@@ -1,7 +1,7 @@
 <template>
   <div class="header"
        :style="style">
-    <h1>{{ title }}</h1>
+    <h1 to="/">{{ title }}</h1>
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Articles from '../views/Articles.vue';
+// import Article from '../views/Article.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,11 @@ const routes = [
     path: '/',
     name: 'articles',
     component: Articles,
+    /* children: [], // prebaciti header u base layout komponentu koja će biti parent ovim rutama
+    meta: {
+      authRequired: true,
+      title: '', // skontati još neki primjer ovoga
+    }, */
   },
   {
     path: '/article/:id',

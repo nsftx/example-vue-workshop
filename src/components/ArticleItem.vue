@@ -23,12 +23,32 @@ export default {
   },
   data() {
     return {
+      interval: null,
     };
   },
   methods: {
     getLink(id) {
       return `/article/${id}`;
     },
+  },
+  mounted() {
+    if (this.item.id !== 1) return;
+
+    this.interval = setInterval(() => {
+      console.log('Here is our interval!');
+    }, 2000);
+  },
+  beforeDestroy() {
+    console.log('=> beforeDestroy Hook', this.item.title);
+  },
+  destroyed() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      console.log(this.interval);
+      this.interval = null;
+    }
+
+    console.log('=> destroyed Hook', this.item.title);
   },
 };
 </script>

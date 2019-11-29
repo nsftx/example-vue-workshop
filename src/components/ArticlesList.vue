@@ -52,6 +52,12 @@ export default {
       this.filterCategory = filterCategory;
     },
   },
+  beforeUpdate() {
+    console.log('=> beforeUpdate Hook');
+  },
+  updated() {
+    console.log('=> updated Hook');
+  },
 };
 </script>
 

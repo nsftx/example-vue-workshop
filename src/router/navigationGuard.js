@@ -1,0 +1,2 @@
+// onRouterReady
+// beforeRouteResolve
