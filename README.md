@@ -51,10 +51,10 @@ Topics:
 - Introduction to Vue application build process, explaining transpilation
 - Vue Router and lazy loading (webpack chunks)
 - Creating multiple pages and navigation
-- Introduction to Vue developer console
 - Axios
 - State management with Vuex
 - Explaining events and child-parent communication
+- Introduction to Vue developer console
 - Using developer console to time travel
 
 ### Day Three
