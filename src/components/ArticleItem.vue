@@ -1,12 +1,13 @@
 <template>
-  <a class="articleItem"
-     :href="getLink(item.id)">
+  <router-link class="articleItem"
+               tag="div"
+               :to="getLink(item.id)">
     <img class="thumb"
          :src="item.thumb">
     <div class="author">{{item.author}}</div>
     <div class="title">{{item.title}}</div>
     <div class="date">{{item.date}}</div>
-  </a>
+  </router-link>
 </template>
 
 <script>
@@ -35,20 +36,20 @@ export default {
     if (this.item.id !== 1) return;
 
     this.interval = setInterval(() => {
-      console.log('Here is our interval!');
+      // console.log('Here is our interval!');
     }, 2000);
   },
   beforeDestroy() {
-    console.log('=> beforeDestroy Hook', this.item.title);
+    // console.log('=> beforeDestroy Hook', this.item.title);
   },
   destroyed() {
     if (this.interval) {
       clearInterval(this.interval);
-      console.log(this.interval);
+      // console.log(this.interval);
       this.interval = null;
     }
 
-    console.log('=> destroyed Hook', this.item.title);
+    // console.log('=> destroyed Hook', this.item.title);
   },
 };
 </script>

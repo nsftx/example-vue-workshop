@@ -53,10 +53,10 @@ export default {
     },
   },
   beforeUpdate() {
-    console.log('=> beforeUpdate Hook');
+    // console.log('=> beforeUpdate Hook');
   },
   updated() {
-    console.log('=> updated Hook');
+    // console.log('=> updated Hook');
   },
 };
 </script>
