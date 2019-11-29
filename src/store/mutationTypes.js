@@ -1,0 +1,4 @@
+export default {
+  SET_ACTIVE_ARTICLE: 'SET_ACTIVE_ARTICLE',
+  SET_ARTICLES: 'SET_ARTICLES',
+};
