@@ -1,18 +1,17 @@
 <template>
-  <div class="articles">
-    <PortalHeader :title="title" />
+  <div class="articles"
+       ref="articleContainer">
     <ArticleList />
   </div>
 </template>
 
 <script>
-import PortalHeader from '@/components/PortalHeader.vue';
+import { mapActions } from 'vuex';
 import ArticleList from '@/components/ArticleList.vue';
 
 export default {
   name: 'articles',
   components: {
-    PortalHeader,
     ArticleList,
   },
   data() {
@@ -20,6 +19,15 @@ export default {
       title: 'Lista članaka',
     };
   },
+  methods: {
+    ...mapActions([
+      'loadArticles',
+    ]),
+  },
+  created() {
+    this.loadArticles();
+  },
+  mounted() {},
 };
 </script>
 

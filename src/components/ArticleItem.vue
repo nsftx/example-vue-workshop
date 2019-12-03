@@ -32,6 +32,8 @@ export default {
       return `/article/${id}`;
     },
   },
+  mounted() {},
+  beforeDestroy() {},
 };
 </script>
 

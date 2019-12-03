@@ -1,13 +1,7 @@
 <template>
   <div class="articlesList">
-    <div class="categories">
-      <div class="category"
-           v-for="(category, index) in categories"
-           :key="index"
-           @click="setFilterCategory(category)">
-        {{category}}
-      </div>
-    </div>
+    <CategoryFilter :categories="categories"
+                    @change="setFilterCategory"/>
     <ArticleItem v-for="article in filteredArticles"
                  :key="article.id"
                  :item="article" />
@@ -16,8 +10,9 @@
 
 <script>
 import { map, uniq, filter } from 'lodash';
+import { mapGetters } from 'vuex';
 import ArticleItem from './ArticleItem.vue';
-import articlesMock from '@/utility/articlesMock';
+import CategoryFilter from '@/components/CategoryFilter.vue';
 
 const defaultCategory = 'all';
 
@@ -25,17 +20,20 @@ export default {
   name: 'ArticlesList',
   components: {
     ArticleItem,
+    CategoryFilter,
   },
   data() {
     return {
-      articles: articlesMock,
       filterCategory: defaultCategory,
     };
   },
   computed: {
+    ...mapGetters([
+      'articles',
+    ]),
     categories() {
       const categories = map(this.articles, article => article.category);
-      categories.unshift(defaultCategory);
+      console.log(categories);
       return uniq(categories);
     },
     filteredArticles() {
@@ -50,6 +48,12 @@ export default {
     setFilterCategory(category) {
       this.filterCategory = category;
     },
+  },
+  beforeUpdate() {
+    // console.log('=> beforeUpdate hook!', this.filterCategory);
+  },
+  updated() {
+    // console.log('=> updated hook!', this.filterCategory);
   },
 };
 </script>
