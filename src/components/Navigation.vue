@@ -22,11 +22,11 @@ export default {
         },
         {
           title: 'Articles',
-          to: 'articles',
+          to: '/articles',
         },
         {
           title: 'Contact',
-          to: 'contact',
+          to: '/contact',
         },
       ],
     };

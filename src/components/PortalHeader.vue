@@ -1,7 +1,7 @@
 <template>
   <div class="header"
        :style="style">
-    <h1 to="/">{{ title }}</h1>
+    <h1 to="/">{{ portalTitle }}</h1>
   </div>
 </template>
 
@@ -16,6 +16,9 @@ export default {
       return {
         backgroundColor: 'white',
       };
+    },
+    portalTitle() {
+      return (this.$route.meta && this.$route.meta.title) || this.title;
     },
   },
 };
