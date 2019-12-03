@@ -26,6 +26,7 @@ Topics:
 - Introduction to Vue
 - Creating Vue application using Vue CLI
 - Explaining Vue CLI and its wizard
+- Introduction to Vue UI
 - Introduction to NPM package manager, installing dependencies like lodash and axios
 - Introduction to .gitignore
 - Introduction to ESLint and basic rules
@@ -50,9 +51,10 @@ Topics:
 - Introduction to Vue application build process, explaining transpilation
 - Vue Router and lazy loading (webpack chunks)
 - Creating multiple pages and navigation
-- Introduction to Vue developer console
+- Axios
 - State management with Vuex
 - Explaining events and child-parent communication
+- Introduction to Vue developer console
 - Using developer console to time travel
 
 ### Day Three
