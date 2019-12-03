@@ -6,7 +6,7 @@
          v-html="article.text"></div>
     <div class="date">{{article.date}}</div>
     <button class="like"
-            :class="{ active: isActiveLike }"
+            :class="{ active: isLiked }"
             @click="like()">
       Like
     </button>
@@ -18,50 +18,45 @@
 </template>
 
 <script>
-import { find, toNumber } from 'lodash';
-import articlesMock from '@/utility/articlesMock';
-import localStorage from '@/utility/localStorage';
+import { toNumber } from 'lodash';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'ArticleDetail',
   data() {
-    return {
-      isActiveLike: false,
-      message: null,
-    };
+    return {};
   },
   computed: {
+    ...mapGetters({
+      article: 'activeArticle',
+      isArticleLiked: 'isArticleLiked',
+      articleLikes: 'articleLikes',
+    }),
     articleId() {
       return toNumber(this.$route.params.id);
     },
-    articleStorageKey() {
-      return `articleLike${this.articleId}`;
+    isLiked() {
+      return this.isArticleLiked(this.articleId);
     },
-    article() {
-      return find(articlesMock, { id: this.articleId });
+    message() {
+      return this.isLiked ? 'Thank you!' : null;
     },
   },
   methods: {
-    isLiked() {
-      return localStorage.getItem(this.articleStorageKey);
-    },
-    like() {
-      if (this.isLiked()) {
-        localStorage.removeItem(this.articleStorageKey);
-      } else {
-        localStorage.setItem(this.articleStorageKey, true);
-      }
+    ...mapActions([
+      'loadArticle',
+      'updateArticleLike',
+    ]),
 
-      this.isActiveLike = this.isLiked();
+    like() {
+      this.updateArticleLike({
+        id: this.articleId,
+        liked: !this.isLiked,
+      });
     },
   },
-  watch: {
-    isActiveLike(value) {
-      this.message = value ? 'Thank you!' : null;
-    },
-  },
-  mounted() {
-    this.isActiveLike = this.isLiked();
+  created() {
+    this.loadArticle(this.articleId);
   },
 };
 </script>

@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import types from './mutationTypes';
 
 export default {
@@ -6,5 +7,8 @@ export default {
   },
   [types.SET_ARTICLES](state, payload) {
     state.articles = payload;
+  },
+  [types.SET_ARTICLE_LIKE](state, payload) {
+    Vue.set(state.articleLikes, `article${payload.id}`, payload.liked);
   },
 };

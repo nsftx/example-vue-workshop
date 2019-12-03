@@ -1,13 +1,14 @@
 <template>
-  <div class="articles">
+  <div class="articles"
+       ref="articlesInput">
     <!-- <input ref="articlesInput"/> -->
     <ArticlesList :articles="articles" />
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import ArticlesList from '@/components/ArticlesList.vue';
-import articlesMock from '@/utility/articlesMock';
 
 export default {
   name: 'Articles',
@@ -17,8 +18,17 @@ export default {
   data() {
     return {
       title: 'Vue News',
-      articles: articlesMock,
     };
+  },
+  computed: {
+    ...mapGetters([
+      'articles',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'loadArticles',
+    ]),
   },
   beforeCreate() {
     /* console.log('=> beforeCreate Hook');
@@ -28,6 +38,7 @@ export default {
     /* console.log('=> created Hook');
     console.log('this.title', this.title);
     console.log('this.$refs.articlesInput', this.$refs.articlesInput); */
+    this.loadArticles();
   },
   beforeMount() {
     /* console.log('=> beforeMount Hook');

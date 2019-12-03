@@ -8,8 +8,11 @@ export default {
     });
   },
   loadArticle({ commit }, id) {
-    api.articles.loadArticles(id).then((result) => {
-      commit(types.SET_ARTICLES, result);
+    api.articles.loadArticle(id).then((result) => {
+      commit(types.SET_ACTIVE_ARTICLE, result[0]);
     });
+  },
+  updateArticleLike({ commit }, data) {
+    commit(types.SET_ARTICLE_LIKE, data);
   },
 };
