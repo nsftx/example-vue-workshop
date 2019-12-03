@@ -15,6 +15,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
       },
       ...articleRoutes,
+      {
+        path: 'contact',
+        name: 'contact',
+        component: () => import(/* webpackChunkName: "contact" */ '@/views/Contact'),
+      },
     ],
   },
 ];
