@@ -5,4 +5,5 @@ export default {
   activeArticle: state => state.activeArticles,
   articleById: state => id => find(state.articles, { id }),
   articleLike: state => id => state.articleLikes[`article${id}`],
+  translations: state => state.translations[state.language],
 };

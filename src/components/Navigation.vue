@@ -11,44 +11,58 @@
 </template>
 
 <script>
+import { map } from 'lodash';
+import { translatable } from '../mixins';
+
 export default {
   name: 'Navigation',
+  mixins: [
+    translatable,
+  ],
   data() {
     return {
-      items: [
+      itemData: [
         {
-          title: 'Home',
+          titleKey: 'homePageLabel',
           to: '/',
         },
         {
-          title: 'Articles',
+          titleKey: 'articlesLabel',
           to: '/articles',
         },
         {
-          title: 'Contact',
+          titleKey: 'contactLabel',
           to: '/contact',
         },
       ],
     };
   },
+  computed: {
+    items() {
+      return map(this.itemData, item => ({
+        title: this.translations[item.titleKey],
+        to: item.to,
+      }));
+    },
+  },
 };
 </script>
 <style lang="scss">
-.navigation {
-  display: flow-root;
-  margin-bottom: 12px;
-}
-
-.navigation-item {
-  padding: 12px 0;
-  float: left;
-  width: (100 / 3) * 1%;
-  text-align: center;
-  background-color: whitesmoke;
-  cursor: pointer;
-
-  &.router-link-exact-active {
-    background-color: lightsalmon;
+  .navigation {
+    display: flow-root;
+    margin-bottom: 12px;
   }
-}
+
+  .navigation-item {
+    padding: 12px 0;
+    float: left;
+    width: (100 / 3) * 1%;
+    text-align: center;
+    background-color: whitesmoke;
+    cursor: pointer;
+
+    &.router-link-exact-active {
+      background-color: lightsalmon;
+    }
+  }
 </style>

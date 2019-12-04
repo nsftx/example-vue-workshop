@@ -7,7 +7,7 @@
     <button class="like"
             :class="{ active: isArticleLiked }"
             @click="toggleLike()">
-      Like
+      {{translations.likeLabel}}
     </button>
     <span class="message"
           v-if="message">
@@ -20,9 +20,13 @@
 import { find, toNumber } from 'lodash';
 import { mapActions, mapGetters } from 'vuex';
 import articlesMock from '@/utility/articlesMock';
+import { translatable } from '@/mixins';
 
 export default {
   name: 'ArticleDetail',
+  mixins: [
+    translatable,
+  ],
   data() {
     return {};
   },
@@ -40,7 +44,7 @@ export default {
       return this.articleLike(this.articleId);
     },
     message() {
-      return this.isArticleLiked ? 'Thank you!' : '';
+      return this.isArticleLiked ? this.translations.thankYouLabel : '';
     },
   },
   methods: {
