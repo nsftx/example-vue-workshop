@@ -17,10 +17,18 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .articleItem {
     background-color: lightcoral;
-    height: 180px;
     color: white;
+
+    .thumb {
+      width: 160px;
+      height: 160px;
+    }
+
+    .title {
+      font-size: 28px;
+    }
   }
 </style>

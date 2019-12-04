@@ -2,16 +2,17 @@
   <div class="articlesList">
     <CategoryFilter :categories="categories"
                     @change="setFilterCategory"/>
-    <ArticleItemHigh v-for="article in filteredArticles"
-                 :key="article.id"
-                 :item="article" />
+    <component v-for="article in filteredArticles"
+               :is="getArticleComponent(article.highlighted)"
+               :key="article.id"
+               :item="article" />
   </div>
 </template>
 
 <script>
 import { map, uniq, filter } from 'lodash';
 import { mapGetters } from 'vuex';
-// import ArticleItem from './ArticleItem.vue';
+import ArticleItem from './ArticleItem.vue';
 import ArticleItemHigh from './ArticleItemHigh.vue';
 import CategoryFilter from '@/components/CategoryFilter.vue';
 
@@ -21,6 +22,7 @@ export default {
   name: 'ArticlesList',
   components: {
     ArticleItemHigh,
+    ArticleItem,
     CategoryFilter,
   },
   data() {
@@ -48,6 +50,11 @@ export default {
     setFilterCategory(category) {
       this.filterCategory = category;
     },
+    getArticleComponent(articleHighlighted) {
+      if (articleHighlighted) return 'ArticleItemHigh';
+
+      return 'ArticleItem';
+    },
   },
   beforeUpdate() {
     // console.log('=> beforeUpdate hook!', this.filterCategory);
@@ -59,20 +66,20 @@ export default {
 </script>
 
 <style lang="scss">
-.articlesList {
-  padding: 12px;
+  .articlesList {
+    padding: 12px;
 
-  .categories {
-    display: flow-root;
-    margin-bottom: 12px;
-  }
+    .categories {
+      display: flow-root;
+      margin-bottom: 12px;
+    }
 
-  .category {
-    float: left;
-    width: (100 / 3) * 1%;
-    text-align: center;
-    background-color: whitesmoke;
-    cursor: pointer;
+    .category {
+      float: left;
+      width: (100 / 3) * 1%;
+      text-align: center;
+      background-color: whitesmoke;
+      cursor: pointer;
+    }
   }
-}
 </style>
