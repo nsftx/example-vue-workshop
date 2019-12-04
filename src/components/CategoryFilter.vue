@@ -19,19 +19,22 @@ export default {
     },
   },
   data() {
-    return {
-      categoriesList: null,
-    };
+    return {};
+  },
+  computed: {
+    categoriesList() {
+      const { categories } = this;
+      categories.unshift(defaultCategory);
+
+      return categories;
+    },
   },
   methods: {
     setCategory(category) {
       this.$emit('change', category);
     },
   },
-  mounted() {
-    this.categoriesList = this.categories;
-    this.categoriesList.unshift(defaultCategory);
-  },
+  mounted() {},
 };
 </script>
 <style lang="scss">

@@ -4,6 +4,7 @@ export default {
   loadArticles() {
     return http.get('/sources/workshop-articles').then((result) => {
       const data = result.data['workshop-articles'];
+      console.log('Articles response');
       return data;
     });
   },

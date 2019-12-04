@@ -33,7 +33,6 @@ export default {
     ]),
     categories() {
       const categories = map(this.articles, article => article.category);
-      console.log(categories);
       return uniq(categories);
     },
     filteredArticles() {

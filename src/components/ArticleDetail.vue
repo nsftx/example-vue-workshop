@@ -5,8 +5,8 @@
          v-html="article.text"></div>
     <div class="date">{{article.date}}</div>
     <button class="like"
-            :class="{ active: isActiveLike }"
-            @click="like()">
+            :class="{ active: isArticleLiked }"
+            @click="toggleLike()">
       Like
     </button>
     <span class="message"
@@ -18,32 +18,40 @@
 
 <script>
 import { find, toNumber } from 'lodash';
+import { mapActions, mapGetters } from 'vuex';
 import articlesMock from '@/utility/articlesMock';
 
 export default {
   name: 'ArticleDetail',
   data() {
-    return {
-      isActiveLike: false,
-      message: null,
-    };
+    return {};
   },
   computed: {
+    ...mapGetters([
+      'articleLike',
+    ]),
     articleId() {
       return toNumber(this.$route.params.id);
     },
     article() {
       return find(articlesMock, { id: this.articleId });
     },
-  },
-  watch: {
-    isActiveLike() {
-      this.message = 'Thank you!';
+    isArticleLiked() {
+      return this.articleLike(this.articleId);
+    },
+    message() {
+      return this.isArticleLiked ? 'Thank you!' : '';
     },
   },
   methods: {
-    like() {
-      this.isActiveLike = true;
+    ...mapActions([
+      'setArticleLike',
+    ]),
+    toggleLike() {
+      this.setArticleLike({
+        isLiked: !this.isArticleLiked,
+        id: this.articleId,
+      });
     },
   },
 };

@@ -12,4 +12,7 @@ export default {
       commit(types.SET_ACTIVE_ARTICLE, data.items);
     });
   },
+  setArticleLike({ commit }, data) {
+    commit(types.SET_ARTICLE_LIKE, data);
+  },
 };
