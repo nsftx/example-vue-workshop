@@ -1,6 +1,13 @@
 <template>
   <div>
-    <PortalHeader :title="title"/>
+    <PortalHeader>
+      <template v-slot:mainTitle>
+        <h1>{{ title }}</h1>
+      </template>
+      <template v-slot:subTitle>
+        <span>Covering all the bases</span>
+      </template>
+    </PortalHeader>
     <Navigation />
     <router-view />
   </div>
@@ -14,7 +21,7 @@ export default {
   name: 'Base',
   data() {
     return {
-      title: 'Vue news',
+      title: 'Better than Best Vue.js Portal',
     };
   },
   components: {

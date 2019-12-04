@@ -1,22 +1,14 @@
 <template>
   <div class="header">
-    <h1>{{ title }}</h1>
+    <slot name="mainTitle"><h1>Best Vue.js Portal</h1></slot>
+    <slot name="subTitle"><h3>News that is fit to print</h3></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: 'PortalHeader',
-  props: {
-    title: {
-      type: String,
-      default: 'Moj portal',
-      required: true,
-      validator(value) {
-        return value.length >= 5;
-      },
-    },
-  },
+  props: {},
 };
 </script>
 
@@ -25,11 +17,19 @@ export default {
   background-color: #fff;
   padding: 16px;
 
-  h1 {
+  h1, span {
     padding: 0;
     margin: 0;
     text-align: center;
+  }
+
+  h1 {
     font-size: 24px;
+  }
+
+  span {
+    display: block;
+    font-size: 14px;
   }
 }
 </style>
