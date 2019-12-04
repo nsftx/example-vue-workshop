@@ -2,7 +2,7 @@
   <div class="articlesList">
     <CategoryFilter :categories="categories"
                     @change="setFilterCategory"/>
-    <ArticleItem v-for="article in filteredArticles"
+    <ArticleItemHigh v-for="article in filteredArticles"
                  :key="article.id"
                  :item="article" />
   </div>
@@ -11,7 +11,8 @@
 <script>
 import { map, uniq, filter } from 'lodash';
 import { mapGetters } from 'vuex';
-import ArticleItem from './ArticleItem.vue';
+// import ArticleItem from './ArticleItem.vue';
+import ArticleItemHigh from './ArticleItemHigh.vue';
 import CategoryFilter from '@/components/CategoryFilter.vue';
 
 const defaultCategory = 'all';
@@ -19,7 +20,7 @@ const defaultCategory = 'all';
 export default {
   name: 'ArticlesList',
   components: {
-    ArticleItem,
+    ArticleItemHigh,
     CategoryFilter,
   },
   data() {
